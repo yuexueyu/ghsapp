@@ -31,20 +31,27 @@
            </b-field>
 
           <b-field label="Role">
-            <b-input 
-              type="text" 
-              name="Role" 
-              v-model="Role"
-              placeholder="User Role" />
+              <b-select
+                  placeholder="Role"
+                  expanded
+                  v-model="Role">
+                  <option value="Admin">Administrator</option>
+                  <option value="Accountant">Accountant</option>
+                  <option value="Clerk">Clerk</option>
+
+              </b-select>
           </b-field>
 
           <b-field label="Status">
-          <b-input 
-            type="text" 
-            name="IsActive" 
-            v-model="IsActive"
-            placeholder="User Status" />
-           </b-field>
+              <b-select
+                  placeholder="Status"
+                  expanded
+                  v-model="IsActive"
+                  >
+                  <option value="0">Active</option>
+                  <option value="1">Inactive</option>
+              </b-select>
+          </b-field>
 
             <b-field>
               <div class="error" v-html="error"></div>
@@ -79,10 +86,10 @@ export default {
     async register() {
       try {
         await authService.register({
-          UserID: this.UserID,
-          UserName: this.UserName,
+          UserID: this.UserID.toUpperCase(),
+          UserName: this.UserName.toUpperCase(),
           Password: this.Password,
-          Role: this.Role,
+          Role: this.Role.toUpperCase(),
           IsActive: this.IsActive
         });
       } catch (error) {
