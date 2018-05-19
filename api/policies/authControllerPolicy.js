@@ -28,11 +28,11 @@ module.exports ={
             break
             case 'Password': 
                res.status(400).send({
-                  error: `The password provided failed to match the following rules
+                  error: `Invalid Password, The password must contain the following rules
                   <br>
-                  1. It must contain only folling characters: lower case, upper case and numeric
+                  1. Lower case, upper case and numeric are allowed
                   <br>
-                  2. Min length 6, Max 10 chaacters
+                  2. Length must be 6 - 10 characters
                   `
                })
                break
